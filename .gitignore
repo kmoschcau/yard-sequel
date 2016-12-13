@@ -1,0 +1,10 @@
+/.bundle/
+/.idea/
+/.yardoc/
+/doc/
+/pkg/
+/test/assoc_global_space/.yardoc/
+/test/assoc_global_space/doc/
+/vendor/
+.rake_tasks~
+*.swp

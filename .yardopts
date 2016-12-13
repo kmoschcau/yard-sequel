@@ -1,0 +1,5 @@
+--title "YARD Sequel Plugin"
+--no-private
+--protected
+--markup markdown
+lib/**/*.rb

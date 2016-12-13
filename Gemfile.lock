@@ -1,0 +1,28 @@
+PATH
+  remote: .
+  specs:
+    yard-sequel (0.1.0)
+      sequel (~> 4.41)
+      yard (~> 0.9)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    awesome_print (1.7.0)
+    byebug (9.0.6)
+    rake (11.3.0)
+    sequel (4.41.0)
+    yard (0.9.5)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  awesome_print (~> 1.7)
+  bundler (~> 1.13)
+  byebug (~> 9.0)
+  rake (~> 11.3)
+  yard-sequel!
+
+BUNDLED WITH
+   1.13.6

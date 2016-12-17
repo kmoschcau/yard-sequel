@@ -6,5 +6,6 @@
 /test/assoc_global_space/.yardoc/
 /test/assoc_global_space/doc/
 /vendor/
+.byebug_history
 .rake_tasks~
 *.swp

@@ -1,17 +1,23 @@
-module YARD::Handlers::Ruby::Sequel::Associations
-  class ManyToOneHandler < YARD::Handlers::Ruby::MethodHandler
-    include YARD::Handlers::Ruby::Sequel::Associations::AssociationHandler
-    include YARD::Handlers::Ruby::Sequel::Associations::DatasetMethod
-    include YARD::Handlers::Ruby::Sequel::Associations::ToOneMethods
+module YARD
+  module Handlers
+    module Ruby
+      module Sequel
+        module Associations
+          # The handler class for Sequel many_to_one associations.
+          # @author Kai Moschcau
+          class ManyToOneHandler < AssociationHandler
+            handles method_call(:many_to_one)
+            namespace_only
 
-    handles method_call(:many_to_one)
-    namespace_only
+            process do
+              create_to_one_getter
+              create_to_one_setter
 
-    process do
-      create_to_one_getter
-      create_to_one_setter
-
-      create_dataset_method
+              create_dataset_method
+            end
+          end
+        end
+      end
     end
   end
 end

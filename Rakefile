@@ -1,8 +1,8 @@
 require 'rake/clean'
-task :default => :build
+task default: :build
 
 spec_file_name = Dir['*.gemspec'].first
-spec           = Gem::Specification::load(spec_file_name)
+spec           = Gem::Specification.load(spec_file_name)
 
 directory 'pkg'
 
@@ -23,20 +23,6 @@ desc "Install #{spec.name} #{spec.version} locally."
 task install: :build do
   sh "gem install #{target_gem_file}"
 end
-
-namespace :push do
-  task normal: :build do
-    sh "bundle exec gem inabox pkg/#{spec.name}-#{spec.version}.gem --host #{spec.metadata['allowed_push_host']}"
-  end
-  
-  desc "Push #{spec.name}-#{spec.version}.gem to #{spec.metadata['allowed_push_host']} and overwrite existing gem."
-  task overwrite: :build do
-    sh "bundle exec gem inabox pkg/#{spec.name}-#{spec.version}.gem --host #{spec.metadata['allowed_push_host']} --overwrite"
-  end
-end
-
-desc "Push #{spec.name}-#{spec.version}.gem to #{spec.metadata['allowed_push_host']}"
-task push: 'push:normal'
 
 desc "Create a git tag 'v#{spec.version}' and push to origin."
 task :tag do

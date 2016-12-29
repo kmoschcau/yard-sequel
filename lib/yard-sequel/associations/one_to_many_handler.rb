@@ -6,6 +6,9 @@ module YARD
           # The handler class for Sequel one_to_many associations.
           # @author Kai Moschcau
           class OneToManyHandler < AssociationHandler
+            include YARD::Handlers::Ruby::Sequel::Associations::DatasetMethod
+            include YARD::Handlers::Ruby::Sequel::Associations::ToManyMethods
+
             handles method_call(:one_to_many)
             namespace_only
 

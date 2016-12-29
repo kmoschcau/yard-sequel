@@ -8,7 +8,8 @@ module YARD
     module Ruby
       # Module for documenting Sequel code.
       # @author Kai Moschcau
-      module Sequel; end
+      module Sequel
+      end
     end
   end
 end

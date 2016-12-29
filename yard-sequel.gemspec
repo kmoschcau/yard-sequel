@@ -3,7 +3,7 @@ require_relative 'lib/yard-sequel/version'
 
 Gem::Specification.new do |spec|
   spec.name    = 'yard-sequel'
-  spec.version = YARD::Sequel::VERSION
+  spec.version = YARD::Handlers::Ruby::Sequel::VERSION
   spec.authors = 'Kai Moschcau'
   spec.email   = 'kai.moschcau@gmail.com'
 

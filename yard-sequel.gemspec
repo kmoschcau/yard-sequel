@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.summary     = 'Provides automatic YARD documentation for Sequel Gem'
   spec.description = 'This gem provides automatic YARD documentation for the'\
                      'Sequel Gem.'
-  # spec.homepage    = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage    = 'https://github.com/kmoschcau/yard-sequel'
   spec.license     = 'MIT'
 
   spec.required_ruby_version     = '~> 2.3'

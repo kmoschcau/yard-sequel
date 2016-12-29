@@ -1,3 +1,9 @@
+[![Gem Version](https://badge.fury.io/rb/yard-sequel.svg)](https://badge.fury.io/rb/yard-sequel)
+[![Dependency Status](https://gemnasium.com/badges/github.com/kmoschcau/yard-sequel.svg)](https://gemnasium.com/github.com/kmoschcau/yard-sequel)
+[![Code Climate](https://codeclimate.com/github/kmoschcau/yard-sequel/badges/gpa.svg)](https://codeclimate.com/github/kmoschcau/yard-sequel)
+[![Inline docs](http://inch-ci.org/github/kmoschcau/yard-sequel.svg?branch=master&style=shields)](http://inch-ci.org/github/kmoschcau/yard-sequel)
+[![Yard Docs](http://img.shields.io/badge/yard-docs-blue.svg)](http://www.rubydoc.info/github/kmoschcau/yard-sequel/master)
+
 # yard-sequel
 
 A plugin for the Yard documentation tool to automatically document

@@ -29,3 +29,8 @@ task :tag do
   sh "git tag v#{spec.version}"
   sh 'git push --tags'
 end
+
+desc "Publish #{spec.name} #{spec.version} to RubyGems.org."
+task publish: :build do
+  sh "gem push #{target_gem_file}"
+end

@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.email   = 'kai.moschcau@gmail.com'
 
   spec.summary     = 'Provides automatic YARD documentation for Sequel Gem'
-  spec.description = 'This gem provides automatic YARD documentation for the'\
+  spec.description = 'This gem provides automatic YARD documentation for the '\
                      'Sequel Gem.'
   spec.homepage    = 'https://github.com/kmoschcau/yard-sequel'
   spec.license     = 'MIT'

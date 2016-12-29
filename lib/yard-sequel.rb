@@ -3,8 +3,11 @@ require 'yard'
 
 Sequel.extension :inflector
 
+# The YARD base module
 module YARD
+  # The YARD handlers module
   module Handlers
+    # The module for YARD ruby handlers
     module Ruby
       # Module for documenting Sequel code.
       # @author Kai Moschcau

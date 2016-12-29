@@ -6,6 +6,8 @@ module YARD
           # Provides methods for creating the dataset method object.
           # @author Kai Moschcau
           module DatasetMethod
+            # @return [YARD::CodeObjects::MethodObject] the dataset method
+            #   object.
             def create_dataset_method
               method = create_method_object("#{association_name}_dataset")
               return_tag(

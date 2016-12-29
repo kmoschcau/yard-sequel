@@ -6,6 +6,8 @@ module YARD
           # Provides methods for creating the to_one method objects.
           # @author Kai Moschcau
           module ToOneMethods
+            # @return [YARD::CodeObjects::MethodObject] the to_one getter method
+            #   object.
             def create_to_one_getter
               name   = association_name
               method = create_method_object(name)
@@ -17,6 +19,8 @@ module YARD
               method
             end
 
+            # @return [YARD::CodeObjects::MethodObject] the to_one setter method
+            #   object.
             def create_to_one_setter
               name             = association_name
               method           = create_method_object("#{name}=")

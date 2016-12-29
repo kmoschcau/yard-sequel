@@ -6,6 +6,8 @@ module YARD
           # Provides methods for creating the to_many method objects.
           # @author Kai Moschcau
           module ToManyMethods
+            # @return [YARD::CodeObjects::MethodObject] the to_many adder method
+            #   object.
             def create_to_many_adder
               name             = association_name
               method           = create_method_object("add_#{name.singularize}")
@@ -25,6 +27,8 @@ module YARD
               method
             end
 
+            # @return [YARD::CodeObjects::MethodObject] the to_many clearer
+            #   method object.
             def create_to_many_clearer
               name             = association_name
               method           = create_method_object("remove_all_#{name}")
@@ -34,6 +38,8 @@ module YARD
               method
             end
 
+            # @return [YARD::CodeObjects::MethodObject] the to_many getter
+            #   method object.
             def create_to_many_getter
               name   = association_name
               method = create_method_object(name)
@@ -45,6 +51,8 @@ module YARD
               method
             end
 
+            # @return [YARD::CodeObjects::MethodObject] the to_many remover
+            #   method object.
             def create_to_many_remover
               name             = association_name
               method           = create_method_object(

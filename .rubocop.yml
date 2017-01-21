@@ -1,3 +1,5 @@
+AllCops:
+  TargetRubyVersion: 2.3
 Style/FileName:
   Exclude:
     - lib/yard-sequel.rb

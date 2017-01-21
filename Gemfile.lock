@@ -11,8 +11,8 @@ GEM
     awesome_print (1.7.0)
     byebug (9.0.6)
     rake (11.3.0)
-    sequel (4.41.0)
-    yard (0.9.5)
+    sequel (4.42.1)
+    yard (0.9.8)
 
 PLATFORMS
   ruby

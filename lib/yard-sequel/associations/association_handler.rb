@@ -40,7 +40,7 @@ module YARD
                 namespace,
                 name
               )
-              register_and_tag(method)
+              register_and_tag method
               method
             end
 
@@ -90,7 +90,7 @@ module YARD
                   "#{YARD::CodeObjects::MethodObject}"
                 )
               end
-              register(method)
+              register method
               method.dynamic  = true
               method[:sequel] = :association
             end

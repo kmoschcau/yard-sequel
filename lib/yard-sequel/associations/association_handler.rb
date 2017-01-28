@@ -4,9 +4,9 @@ module YARD
     module Ruby
       module Sequel
         module Associations
-          # The basic method handler class for Sequel associations.
+          # The basic DSL handler class for Sequel associations.
           # @author Kai Moschcau
-          class AssociationHandler < YARD::Handlers::Ruby::MethodHandler
+          class AssociationHandler < YARD::Handlers::Ruby::DSLHandler
             protected
 
             # Adds a parameter tag to a method object.
@@ -19,12 +19,7 @@ module YARD
             def add_param_tag(method, name, class_name, description)
               method.parameters << [name, nil]
               method.docstring.add_tag(
-                YARD::Tags::Tag.new(
-                  :param,
-                  description,
-                  class_name,
-                  name
-                )
+                YARD::Tags::Tag.new(:param, description, class_name, name)
               )
             end
 
@@ -33,13 +28,16 @@ module YARD
               @statement.parameters.first.jump(:ident).source
             end
 
+            # @return [Array<YARD::Parser::Ruby::AstNode>] the association nodes
+            #   of the options Hash.
+            def association_options
+              @statement.parameters[1].filter { |node| node.type == :assoc }
+            end
+
             # @param [String] name The name of the method object.
             # @return [YARD::CodeObjects::MethodObject] a method object.
             def create_method_object(name)
-              method = YARD::CodeObjects::MethodObject.new(
-                namespace,
-                name
-              )
+              method = YARD::CodeObjects::MethodObject.new(namespace, name)
               register_and_tag method
               method
             end
@@ -52,11 +50,7 @@ module YARD
             def return_tag(method, class_name, description)
               method.docstring.delete_tags(:return)
               method.docstring.add_tag(
-                YARD::Tags::Tag.new(
-                  :return,
-                  description,
-                  class_name
-                )
+                YARD::Tags::Tag.new(:return, description, class_name)
               )
             end
 
@@ -68,11 +62,7 @@ module YARD
             def void_return_tag(method)
               method.docstring.delete_tags(:return)
               method.docstring.add_tag(
-                YARD::Tags::Tag.new(
-                  :return,
-                  nil,
-                  'void'
-                )
+                YARD::Tags::Tag.new(:return, nil, 'void')
               )
             end
 
@@ -84,11 +74,8 @@ module YARD
             # @return [void]
             def register_and_tag(method)
               unless method.is_a? YARD::CodeObjects::MethodObject
-                raise(
-                  ArgumentError,
-                  'The given method has to be a '\
-                  "#{YARD::CodeObjects::MethodObject}"
-                )
+                raise(ArgumentError, 'The given method has to be a ' +
+                                     YARD::CodeObjects::MethodObject.to_s)
               end
               register method
               method.dynamic  = true

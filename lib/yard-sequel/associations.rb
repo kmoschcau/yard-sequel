@@ -1,15 +1,9 @@
 # frozen_string_literal: true
-module YARD
-  module Handlers
-    module Ruby
-      module Sequel
-        # Module for documentation Sequel associations.
-        # @author Kai Moschcau
-        module Associations
-        end
-      end
-    end
-  end
+
+module YardSequel
+  # Module for documentation Sequel associations.
+  # @author Kai Moschcau
+  module Associations; end
 end
 
 require_relative 'associations/association_handler'

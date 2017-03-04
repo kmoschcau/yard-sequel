@@ -2,7 +2,7 @@
 
 module YardSequel
   # Represents a Ruby Hash initialized from an Abstract Syntax Tree consisting
-  # of `YARD::Parser::Ruby:AstNode`s.
+  # of `YARD::Parser::Ruby::AstNode`s.
   # @author Kai Moschcau
   class AstHash
     attr_accessor :ast

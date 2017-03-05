@@ -5,8 +5,6 @@ module YardSequel
   # of `YARD::Parser::Ruby::AstNode`s.
   # @author Kai Moschcau
   class AstHash
-    attr_accessor :ast
-
     def initialize(ast)
       check_ast ast
       @ast = ast
@@ -25,6 +23,18 @@ module YardSequel
       end
     end
 
+    def check_assoc_child_has_two_children(child_ast)
+      return if child_ast.children.size == 2
+      raise(ArgumentError, 'each `:assoc` child must have two children')
+    end
+
+    def check_children(ast)
+      check_has_only_assoc_children ast
+      ast.children.each do |child_ast|
+        check_assoc_child_has_two_children child_ast
+      end
+    end
+
     def check_has_only_assoc_children(ast)
       return unless ast.children.any? { |child| child.type != :assoc }
       raise(ArgumentError,
@@ -33,7 +43,7 @@ module YardSequel
 
     def check_hash_children(ast)
       return if ast.children.empty?
-      check_has_only_assoc_children ast
+      check_children ast
     end
 
     def check_is_ast_node(ast)
@@ -53,7 +63,7 @@ module YardSequel
         raise(ArgumentError,
               'a passed `ast` of type `:list` has to have children')
       end
-      check_has_only_assoc_children ast
+      check_children ast
     end
   end
 end

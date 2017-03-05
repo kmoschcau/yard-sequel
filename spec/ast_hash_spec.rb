@@ -31,17 +31,33 @@ RSpec.describe YardSequel::AstHash, '.new' do
 
   context 'passed an empty :list AstNode' do
     it 'raises an ArgumentError' do
-      expect { YardSequel::AstHash.new(Ast.s(:list)) }.to(
-        raise_error ArgumentError
-      )
+      expect do
+        YardSequel::AstHash.new(Ast.s(:list))
+      end.to raise_error ArgumentError
     end
   end
 
   context 'passed a :list AstNode with :assoc children' do
     it 'does not raise an Error' do
-      expect { YardSequel::AstHash.new(Ast.s(Ast.s(:assoc))) }.not_to(
-        raise_error
-      )
+      expect do
+        YardSequel::AstHash.new(Ast.s(Ast.s(:assoc, Ast.s, Ast.s)))
+      end.not_to raise_error
+    end
+  end
+
+  context 'passed an AstNode with an :assoc child with only one child' do
+    it 'raises an ArgumentError' do
+      expect do
+        YardSequel::AstHash.new(Ast.s(Ast.s(:assoc, Ast.s)))
+      end.to raise_error ArgumentError
+    end
+  end
+
+  context 'passed an AstNode with an :assoc child with three children' do
+    it 'raises an ArgumentError' do
+      expect do
+        YardSequel::AstHash.new(Ast.s(Ast.s(:assoc, Ast.s, Ast.s, Ast.s)))
+      end.to raise_error ArgumentError
     end
   end
 end

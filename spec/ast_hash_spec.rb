@@ -46,15 +46,99 @@ RSpec.describe YardSequel::AstHash, '.new' do
   end
 end
 
-RSpec.describe YardSequel::AstHash, '#to_h' do
-  context 'passed an empty Hash literal AST' do
+RSpec.describe YardSequel::AstHash,
+               '#to_h called on an AstHash initialized with' do
+  context 'an empty :hash AST' do
     output_hash = YardSequel::AstHash.new(Ast.s(:hash)).to_h
+
     it 'returns a Hash' do
       expect(output_hash).to be_a Hash
     end
 
     it 'returns an empty Hash' do
       expect(output_hash).to be_empty
+    end
+  end
+
+  context 'a :hash AST with a single :assoc child' do
+    ast         = Ast.s(:hash, Ast.s(:assoc, Ast.s, Ast.s))
+    output_hash = YardSequel::AstHash.new(ast).to_h
+
+    it 'returns a Hash' do
+      expect(output_hash).to be_a Hash
+    end
+
+    it 'returns a Hash with exactly one element' do
+      expect(output_hash.size).to be 1
+    end
+
+    it 'returns a Hash with an AstNode as key and an AstNode as value' do
+      expect(output_hash).to be(Ast.s => Ast.s)
+    end
+  end
+
+  random_number = rand(20)
+  context "a :hash AST with #{random_number} :assoc children" do
+    # rubocop:disable Lint/UnneededSplatExpansion
+    ast = Ast.s(:hash, *Array.new(random_number) do |number|
+                         Ast.s(:assoc, Ast.s(number), Ast.s)
+                       end)
+    # rubocop:enable Lint/UnneededSplatExpansion
+    output_hash = YardSequel::AstHash.new(ast).to_h
+
+    it 'returns a Hash' do
+      expect(output_hash).to be_a Hash
+    end
+
+    it "returns a Hash with #{random_number} elements" do
+      expect(output_hash.size).to be random_number
+    end
+
+    it "returns a Hash with #{random_number} AstNode key pairs" do
+      match_hash = {}
+      random_number.times { |number| match_hash[Ast.s(number)] = Ast.s }
+      expect(output_hash).to be match_hash
+    end
+  end
+
+  context 'a :list AST with a single :assoc child' do
+    ast         = Ast.s(Ast.s(:assoc, Ast.s, Ast.s))
+    output_hash = YardSequel::AstHash.new(ast).to_h
+
+    it 'returns a Hash' do
+      expect(output_hash).to be_a Hash
+    end
+
+    it 'returns a Hash with exactly one element' do
+      expect(output_hash.size).to be 1
+    end
+
+    it 'returns a Hash with an AstNode as key and an AstNode as value' do
+      expect(output_hash).to be(Ast.s => Ast.s)
+    end
+  end
+
+  random_number = rand(20)
+  context "a :list AST with #{random_number} :assoc children" do
+    # rubocop:disable Lint/UnneededSplatExpansion
+    ast = Ast.s(*Array.new(random_number) do |number|
+                  Ast.s(:assoc, Ast.s(number), Ast.s)
+                end)
+    # rubocop:enable Lint/UnneededSplatExpansion
+    output_hash = YardSequel::AstHash.new(ast).to_h
+
+    it 'returns a Hash' do
+      expect(output_hash).to be_a Hash
+    end
+
+    it "returns a Hash with #{random_number} elements" do
+      expect(output_hash.size).to be random_number
+    end
+
+    it "returns a Hash with #{random_number} AstNode key pairs" do
+      match_hash = {}
+      random_number.times { |number| match_hash[Ast.s(number)] = Ast.s }
+      expect(output_hash).to be match_hash
     end
   end
 end

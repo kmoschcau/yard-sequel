@@ -89,14 +89,14 @@ RSpec.describe YardSequel::AstNodeHash, '#from_ast passed' do
     end
 
     it 'returns a Hash with an AstNode as key and an AstNode as value' do
-      expect(output_hash).to be(Ast.s => Ast.s)
+      expect(output_hash).to eq(Ast.s => Ast.s)
     end
   end
 
-  random_number = rand(20)
-  context "a :hash AST with #{random_number} :assoc children" do
+  hash_random_number = rand(20)
+  context "a :hash AST with #{hash_random_number} :assoc children" do
     # rubocop:disable Lint/UnneededSplatExpansion
-    ast = Ast.s(:hash, *Array.new(random_number) do |number|
+    ast = Ast.s(:hash, *Array.new(hash_random_number) do |number|
                          Ast.s(:assoc, Ast.s(number), Ast.s)
                        end)
     # rubocop:enable Lint/UnneededSplatExpansion
@@ -106,14 +106,14 @@ RSpec.describe YardSequel::AstNodeHash, '#from_ast passed' do
       expect(output_hash).to be_a Hash
     end
 
-    it "returns a Hash with #{random_number} elements" do
-      expect(output_hash.size).to be random_number
+    it "returns a Hash with #{hash_random_number} elements" do
+      expect(output_hash.size).to be hash_random_number
     end
 
-    it "returns a Hash with #{random_number} AstNode key pairs" do
+    it "returns a Hash with #{hash_random_number} AstNode key pairs" do
       match_hash = {}
-      random_number.times { |number| match_hash[Ast.s(number)] = Ast.s }
-      expect(output_hash).to be match_hash
+      hash_random_number.times { |number| match_hash[Ast.s(number)] = Ast.s }
+      expect(output_hash).to eq match_hash
     end
   end
 
@@ -130,14 +130,14 @@ RSpec.describe YardSequel::AstNodeHash, '#from_ast passed' do
     end
 
     it 'returns a Hash with an AstNode as key and an AstNode as value' do
-      expect(output_hash).to be(Ast.s => Ast.s)
+      expect(output_hash).to eq(Ast.s => Ast.s)
     end
   end
 
-  random_number = rand(20)
-  context "a :list AST with #{random_number} :assoc children" do
+  list_random_number = rand(20)
+  context "a :list AST with #{list_random_number} :assoc children" do
     # rubocop:disable Lint/UnneededSplatExpansion
-    ast = Ast.s(*Array.new(random_number) do |number|
+    ast = Ast.s(*Array.new(list_random_number) do |number|
                   Ast.s(:assoc, Ast.s(number), Ast.s)
                 end)
     # rubocop:enable Lint/UnneededSplatExpansion
@@ -147,14 +147,14 @@ RSpec.describe YardSequel::AstNodeHash, '#from_ast passed' do
       expect(output_hash).to be_a Hash
     end
 
-    it "returns a Hash with #{random_number} elements" do
-      expect(output_hash.size).to be random_number
+    it "returns a Hash with #{list_random_number} elements" do
+      expect(output_hash.size).to be list_random_number
     end
 
-    it "returns a Hash with #{random_number} AstNode key pairs" do
+    it "returns a Hash with #{list_random_number} AstNode key pairs" do
       match_hash = {}
-      random_number.times { |number| match_hash[Ast.s(number)] = Ast.s }
-      expect(output_hash).to be match_hash
+      list_random_number.times { |number| match_hash[Ast.s(number)] = Ast.s }
+      expect(output_hash).to eq match_hash
     end
   end
 end

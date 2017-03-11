@@ -4,7 +4,7 @@ module YardSequel
   # Represents a Ruby Hash initialized from an Abstract Syntax Tree consisting
   # of `YARD::Parser::Ruby::AstNode`s.
   # @author Kai Moschcau
-  class AstHash
+  class AstNodeHash
     def initialize(ast)
       check_ast ast
       @ast = ast

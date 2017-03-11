@@ -8,6 +8,7 @@ module YardSequel
     class << self
       def from_ast(ast)
         check_ast ast
+        node_hash_from_node ast
       end
 
       def check_ast(ast)
@@ -62,6 +63,12 @@ module YardSequel
                 'a passed `ast` of type `:list` has to have children')
         end
         check_children ast
+      end
+
+      def node_hash_from_node(ast)
+        hash = {}
+        ast.children.each { |cn| hash[cn.children[0]] = cn.children[1] }
+        hash
       end
     end
   end

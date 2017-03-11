@@ -10,62 +10,62 @@ end
 
 # rubocop:disable Metrics/BlockLength
 
-RSpec.describe YardSequel::AstNodeHash, '.new' do
-  context 'passed nil' do
+RSpec.describe YardSequel::AstNodeHash, '.check_ast passed' do
+  context 'nil' do
     it 'raises a TypeError' do
-      expect { YardSequel::AstNodeHash.new(nil) }.to raise_error TypeError
+      expect { YardSequel::AstNodeHash.check_ast(nil) }.to raise_error TypeError
     end
   end
 
-  context 'passed an empty AstNode' do
+  context 'an empty AstNode' do
     it 'raises an ArgumentError' do
-      expect { YardSequel::AstNodeHash.new(Ast.s) }.to raise_error ArgumentError
+      expect { YardSequel::AstNodeHash.check_ast(Ast.s) }
+        .to raise_error ArgumentError
     end
   end
 
-  context 'passed an empty :hash AstNode' do
+  context 'an empty :hash AstNode' do
     it 'does not raise an Error' do
-      expect { YardSequel::AstNodeHash.new(Ast.s(:hash)) }.not_to raise_error
+      expect { YardSequel::AstNodeHash.check_ast(Ast.s(:hash)) }
+        .not_to raise_error
     end
   end
 
-  context 'passed an empty :list AstNode' do
+  context 'an empty :list AstNode' do
     it 'raises an ArgumentError' do
-      expect do
-        YardSequel::AstNodeHash.new(Ast.s(:list))
-      end.to raise_error ArgumentError
+      expect { YardSequel::AstNodeHash.check_ast(Ast.s(:list)) }
+        .to raise_error ArgumentError
     end
   end
 
-  context 'passed a :list AstNode with :assoc children' do
+  context 'a :list AstNode with :assoc children' do
     it 'does not raise an Error' do
       expect do
-        YardSequel::AstNodeHash.new(Ast.s(Ast.s(:assoc, Ast.s, Ast.s)))
+        YardSequel::AstNodeHash.check_ast(Ast.s(Ast.s(:assoc, Ast.s, Ast.s)))
       end.not_to raise_error
     end
   end
 
-  context 'passed an AstNode with an :assoc child with only one child' do
+  context 'an AstNode with an :assoc child with only one child' do
     it 'raises an ArgumentError' do
-      expect do
-        YardSequel::AstNodeHash.new(Ast.s(Ast.s(:assoc, Ast.s)))
-      end.to raise_error ArgumentError
+      expect { YardSequel::AstNodeHash.check_ast(Ast.s(Ast.s(:assoc, Ast.s))) }
+        .to raise_error ArgumentError
     end
   end
 
-  context 'passed an AstNode with an :assoc child with three children' do
+  context 'an AstNode with an :assoc child with three children' do
     it 'raises an ArgumentError' do
       expect do
-        YardSequel::AstNodeHash.new(Ast.s(Ast.s(:assoc, Ast.s, Ast.s, Ast.s)))
+        YardSequel::AstNodeHash
+          .check_ast(Ast.s(Ast.s(:assoc, Ast.s, Ast.s, Ast.s)))
       end.to raise_error ArgumentError
     end
   end
 end
 
-RSpec.describe YardSequel::AstNodeHash,
-               '#to_h called on an AstHash initialized with' do
+RSpec.describe YardSequel::AstNodeHash, '#from_ast passed' do
   context 'an empty :hash AST' do
-    output_hash = YardSequel::AstNodeHash.new(Ast.s(:hash)).to_h
+    output_hash = YardSequel::AstNodeHash.from_ast(Ast.s(:hash))
 
     it 'returns a Hash' do
       expect(output_hash).to be_a Hash
@@ -78,7 +78,7 @@ RSpec.describe YardSequel::AstNodeHash,
 
   context 'a :hash AST with a single :assoc child' do
     ast         = Ast.s(:hash, Ast.s(:assoc, Ast.s, Ast.s))
-    output_hash = YardSequel::AstNodeHash.new(ast).to_h
+    output_hash = YardSequel::AstNodeHash.from_ast(ast)
 
     it 'returns a Hash' do
       expect(output_hash).to be_a Hash
@@ -100,7 +100,7 @@ RSpec.describe YardSequel::AstNodeHash,
                          Ast.s(:assoc, Ast.s(number), Ast.s)
                        end)
     # rubocop:enable Lint/UnneededSplatExpansion
-    output_hash = YardSequel::AstNodeHash.new(ast).to_h
+    output_hash = YardSequel::AstNodeHash.from_ast(ast)
 
     it 'returns a Hash' do
       expect(output_hash).to be_a Hash
@@ -119,7 +119,7 @@ RSpec.describe YardSequel::AstNodeHash,
 
   context 'a :list AST with a single :assoc child' do
     ast         = Ast.s(Ast.s(:assoc, Ast.s, Ast.s))
-    output_hash = YardSequel::AstNodeHash.new(ast).to_h
+    output_hash = YardSequel::AstNodeHash.from_ast(ast)
 
     it 'returns a Hash' do
       expect(output_hash).to be_a Hash
@@ -141,7 +141,7 @@ RSpec.describe YardSequel::AstNodeHash,
                   Ast.s(:assoc, Ast.s(number), Ast.s)
                 end)
     # rubocop:enable Lint/UnneededSplatExpansion
-    output_hash = YardSequel::AstNodeHash.new(ast).to_h
+    output_hash = YardSequel::AstNodeHash.from_ast(ast)
 
     it 'returns a Hash' do
       expect(output_hash).to be_a Hash

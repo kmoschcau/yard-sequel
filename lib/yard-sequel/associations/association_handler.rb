@@ -5,6 +5,10 @@ module YardSequel
     # The basic DSL handler class for Sequel associations.
     # @author Kai Moschcau
     class AssociationHandler < YARD::Handlers::Ruby::DSLHandler
+      def process
+        log.debug { "#{self.class.name}#process call" }
+      end
+
       protected
 
       # Adds a parameter tag to a method object.

@@ -13,7 +13,8 @@ module YARD
             handles method_call(:many_to_one)
             namespace_only
 
-            process do
+            def process
+              super
               create_to_one_getter
               create_to_one_setter
 

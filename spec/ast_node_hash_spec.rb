@@ -111,9 +111,7 @@ RSpec.describe YardSequel::AstNodeHash, '#from_ast passed' do
     end
 
     it "returns a Hash with #{hash_random_number} AstNode key pairs" do
-      match_hash = {}
-      hash_random_number.times { |number| match_hash[Ast.s(number)] = Ast.s }
-      expect(output_hash).to eq match_hash
+      expect(output_hash).to eq n_elements_node_hash(hash_random_number)
     end
   end
 
@@ -152,9 +150,16 @@ RSpec.describe YardSequel::AstNodeHash, '#from_ast passed' do
     end
 
     it "returns a Hash with #{list_random_number} AstNode key pairs" do
-      match_hash = {}
-      list_random_number.times { |number| match_hash[Ast.s(number)] = Ast.s }
-      expect(output_hash).to eq match_hash
+      expect(output_hash).to eq n_elements_node_hash(list_random_number)
     end
   end
+end
+
+# @param [Integer] number_elements The amount of elements the Hash should have.
+# @return [Hash{YARD::Parser::Ruby::AstNode=>YARD::Parser::Ruby::AstNode}]
+#   a Hash with the passed amount of AstNode key-value pairs.
+def n_elements_node_hash(number_elements)
+  hash = {}
+  number_elements.times { |number| hash[Ast.s(number)] = Ast.s }
+  hash
 end

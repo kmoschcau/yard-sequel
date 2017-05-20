@@ -1,5 +1,6 @@
 # coding: utf-8
 # frozen_string_literal: true
+
 require_relative 'lib/yard-sequel/version'
 
 Gem::Specification.new do |spec|

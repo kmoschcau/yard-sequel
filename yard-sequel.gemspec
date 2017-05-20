@@ -25,6 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'byebug', '~> 9.0'
   spec.add_development_dependency 'rake', '~> 12.0'
   spec.add_development_dependency 'rspec', '~> 3.5'
+  spec.add_development_dependency 'rubocop', '~> 0.48'
 
   spec.add_runtime_dependency 'sequel', '~> 4.0'
   spec.add_runtime_dependency 'yard', '~> 0.9'

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
+
 require 'sequel'
 
+# The Artist test class.
 class Artist < Sequel::Model
   # @!method albums
   #   @return [Array<Album>] the albums.

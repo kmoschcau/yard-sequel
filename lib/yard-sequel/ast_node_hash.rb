@@ -52,7 +52,7 @@ module YardSequel
       end
 
       def check_is_hash_or_list(ast)
-        return if %i(hash list).include? ast.type
+        return if %i[hash list].include? ast.type
         raise(ArgumentError,
               "the passed `ast`'s type has to be `:hash` or `:list`")
       end

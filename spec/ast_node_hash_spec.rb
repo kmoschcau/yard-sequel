@@ -95,7 +95,7 @@ RSpec.describe YardSequel::AstNodeHash, '.from_ast passed' do
     end
   end
 
-  hash_random_number = rand(20)
+  hash_random_number = rand(1..20)
   context "a :hash AST with #{hash_random_number} :assoc children" do
     # rubocop:disable Lint/UnneededSplatExpansion
     ast = Ast.s(:hash, *Array.new(hash_random_number) do |number|
@@ -134,7 +134,7 @@ RSpec.describe YardSequel::AstNodeHash, '.from_ast passed' do
     end
   end
 
-  list_random_number = rand(20)
+  list_random_number = rand(1..20)
   context "a :list AST with #{list_random_number} :assoc children" do
     # rubocop:disable Lint/UnneededSplatExpansion
     ast = Ast.s(*Array.new(list_random_number) do |number|

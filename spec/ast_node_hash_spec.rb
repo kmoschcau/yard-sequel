@@ -65,7 +65,7 @@ RSpec.describe YardSequel::AstNodeHash, '.check_ast passed' do
   end
 end
 
-RSpec.describe YardSequel::AstNodeHash, '#from_ast passed' do
+RSpec.describe YardSequel::AstNodeHash, '.from_ast passed' do
   context 'an empty :hash AST' do
     output_hash = YardSequel::AstNodeHash.from_ast(Ast.s(:hash))
 

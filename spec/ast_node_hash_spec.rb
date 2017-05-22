@@ -3,8 +3,6 @@
 require 'yard'
 require 'yard/parser/ruby/ast_node'
 
-require_relative '../lib/yard-sequel/ast_node_hash'
-
 # Helper class to easily create ASTs.
 class Ast
   extend YARD::Parser::Ruby

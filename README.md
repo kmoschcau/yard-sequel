@@ -1,4 +1,5 @@
 [![Gem Version](https://badge.fury.io/rb/yard-sequel.svg)](https://badge.fury.io/rb/yard-sequel)
+[![Build Status](https://travis-ci.org/kmoschcau/yard-sequel.svg?branch=master)](https://travis-ci.org/kmoschcau/yard-sequel)
 [![Dependency Status](https://gemnasium.com/badges/github.com/kmoschcau/yard-sequel.svg)](https://gemnasium.com/github.com/kmoschcau/yard-sequel)
 [![Code Climate](https://codeclimate.com/github/kmoschcau/yard-sequel/badges/gpa.svg)](https://codeclimate.com/github/kmoschcau/yard-sequel)
 [![Inline docs](http://inch-ci.org/github/kmoschcau/yard-sequel.svg?branch=master&style=shields)](http://inch-ci.org/github/kmoschcau/yard-sequel)

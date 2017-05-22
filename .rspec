@@ -1,2 +1,3 @@
 --color
+--require coveralls_helper
 --require spec_helper

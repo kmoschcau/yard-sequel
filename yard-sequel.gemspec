@@ -15,15 +15,9 @@ Gem::Specification.new do |spec|
   spec.homepage    = 'https://github.com/kmoschcau/yard-sequel'
   spec.license     = 'MIT'
 
-  spec.required_ruby_version     = '~> 2.0'
-  spec.required_rubygems_version = '~> 2.0'
-
   spec.files         = Dir['lib/**/*.rb'] + ['.yardopts']
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'awesome_print'
-  spec.add_development_dependency 'bundler'
-  spec.add_development_dependency 'byebug'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec'
   spec.add_development_dependency 'rubocop', '~> 0.48'

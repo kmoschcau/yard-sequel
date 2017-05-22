@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/kmoschcau/yard-sequel.svg?branch=master)](https://travis-ci.org/kmoschcau/yard-sequel)
 [![Dependency Status](https://gemnasium.com/badges/github.com/kmoschcau/yard-sequel.svg)](https://gemnasium.com/github.com/kmoschcau/yard-sequel)
 [![Code Climate](https://codeclimate.com/github/kmoschcau/yard-sequel/badges/gpa.svg)](https://codeclimate.com/github/kmoschcau/yard-sequel)
+[![Coverage Status](https://coveralls.io/repos/github/kmoschcau/yard-sequel/badge.svg?branch=master)](https://coveralls.io/github/kmoschcau/yard-sequel?branch=beta)
 [![Inline docs](http://inch-ci.org/github/kmoschcau/yard-sequel.svg?branch=master&style=shields)](http://inch-ci.org/github/kmoschcau/yard-sequel)
 [![Yard Docs](http://img.shields.io/badge/yard-docs-blue.svg)](http://www.rubydoc.info/github/kmoschcau/yard-sequel/master)
 

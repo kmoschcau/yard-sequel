@@ -55,3 +55,5 @@ Gemfile.lock
 .byebug_history
 .rake_tasks~
 *.swp
+gems.tags
+tags

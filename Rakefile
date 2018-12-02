@@ -1,7 +1,17 @@
 # frozen_string_literal: true
 
+begin
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new
+rescue LoadError
+  task :spec do
+    abort 'FAILURE: RSpec rake task could not be loaded'
+  end
+end
+
+task default: [:spec]
+
 require 'rake/clean'
-task default: :build
 
 spec_file_name = Dir['*.gemspec'].first
 spec           = Gem::Specification.load(spec_file_name)

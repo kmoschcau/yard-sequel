@@ -1,5 +1,12 @@
+require:
+- rubocop-rspec
 AllCops:
-  TargetRubyVersion: 2.0
+  TargetRubyVersion: 2.3
+Metrics/BlockLength:
+  Exclude:
+  - 'spec/**/*'
 Naming/FileName:
   Exclude:
     - lib/yard-sequel.rb
+RSpec/ImplicitSubject:
+  Enabled: false

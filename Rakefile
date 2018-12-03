@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new
+
+task default: [:spec]
+
 require 'rake/clean'
-task default: :build
 
 spec_file_name = Dir['*.gemspec'].first
 spec           = Gem::Specification.load(spec_file_name)

@@ -24,6 +24,7 @@ module YardSequel
 
       def check_assoc_child_has_two_children(child_ast)
         return if child_ast.children.size == 2
+
         raise(ArgumentError, 'each `:assoc` child must have two children')
       end
 
@@ -36,23 +37,27 @@ module YardSequel
 
       def check_has_only_assoc_children(ast)
         return unless ast.children.any? { |child| child.type != :assoc }
+
         raise(ArgumentError,
               'all children of the passed `ast` have to have the type `:assoc`')
       end
 
       def check_hash_children(ast)
         return if ast.children.empty?
+
         check_children ast
       end
 
       def check_is_ast_node(ast)
         return if ast.is_a? YARD::Parser::Ruby::AstNode
+
         raise(TypeError,
               'the passed `ast` has to be a `YARD::Parser::Ruby::AstNode`')
       end
 
       def check_is_hash_or_list(ast)
         return if %i[hash list].include? ast.type
+
         raise(ArgumentError,
               "the passed `ast`'s type has to be `:hash` or `:list`")
       end

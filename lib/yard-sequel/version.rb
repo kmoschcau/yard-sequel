@@ -11,7 +11,7 @@ module YardSequel
 
   # The build version number.
   # Used for internal changes.
-  V_BUILD = 0
+  V_BUILD = 1
 
   # The version of the Sequel models.
   VERSION = Gem::Version.new("#{V_MAJOR}.#{V_MINOR}.#{V_BUILD}")

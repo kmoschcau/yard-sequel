@@ -9,6 +9,7 @@ module YardSequel
       include YardSequel::Associations::ToManyMethods
       handles method_call(:one_to_many)
       namespace_only
+
       def process
         super
         create_to_many_adder

@@ -12,8 +12,8 @@ module YardSequel
       protected
 
       # Adds a parameter tag to a method object.
-      # @param [YARD::CodeObjects::MethodObject] method
-      #   The method to add the parameter tag to.
+      # @param [YARD::CodeObjects::MethodObject] method The method to add the
+      #   parameter tag to.
       # @param [String] name The name of the parameter.
       # @param [String] class_name The class name of the parameter.
       # @param [String] description The description of the parameter.

@@ -30,10 +30,18 @@ module YardSequel
         @statement.parameters.first.jump(:ident).source
       end
 
-      # @return [Array<YARD::Parser::Ruby::AstNode>] the association nodes
-      #   of the options Hash.
+      # Creates a Hash of AstNodes, where the association option names are the
+      # keys and the parameters are the values.
+      # @return [nil] If the association does not have an options parameter or
+      #   it is empty.
+      # @return [Hash<YARD::Parser::Ruby::AstNode>] the association options as a
+      #   Hash of the option name and parameter AstNodes.
       def association_options
-        @statement.parameters[1].filter { |node| node.type == :assoc }
+        option_param = @statement.parameters[1] || return
+        AstNodeHash.from_ast(option_param)
+      rescue ArgumentError, TypeError => error
+        log.debug error.message
+        nil
       end
 
       # @param [String] name The name of the method object.

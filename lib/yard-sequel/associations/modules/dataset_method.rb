@@ -9,8 +9,7 @@ module YardSequel
       #   object.
       def create_dataset_method
         method = create_method_object("#{association_name}_dataset")
-        return_tag(method, 'Sequel::Dataset', 'the association\'s'\
-                                                    'dataset.')
+        return_tag(method, 'Sequel::Dataset', 'the association\'s dataset.')
         method
       end
     end

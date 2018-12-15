@@ -7,6 +7,7 @@ module YardSequel
     class AssociationHandler < YARD::Handlers::Ruby::DSLHandler
       def process
         log.debug { "#{self.class.name}#process call" }
+        @association_options = association_options
       end
 
       protected
@@ -25,21 +26,24 @@ module YardSequel
         )
       end
 
+      # @return [Symbol, String] the association Class.
+      def association_class
+        @association_options&.[](:class) || association_name.classify
+      end
+
       # @return [String] the name of the association
       def association_name
         @statement.parameters.first.jump(:ident).source
       end
 
-      # Creates a Hash of AstNodes, where the association option names are the
-      # keys and the parameters are the values.
       # @return [nil] If the association does not have an options parameter or
       #   it is empty.
-      # @return [Hash<YARD::Parser::Ruby::AstNode>] the association options as a
-      #   Hash of the option name and parameter AstNodes.
+      # @return [AssociationOptions] the AssociationOptions of the association.
       def association_options
         option_param = @statement.parameters[1] || return
-        AstNodeHash.from_ast(option_param)
+        AssociationOptions.new AstNodeHash.from_ast(option_param)
       rescue ArgumentError, TypeError => error
+        log.warn 'Could not parse association options due to syntax error.'
         log.debug error.message
         nil
       end

@@ -10,8 +10,8 @@ module YardSequel
       def create_to_one_getter
         name   = association_name
         method = create_method_object name
-        return_tag(method, name.classify,
-                   "the associated #{name.classify}.")
+        return_tag(method, association_class,
+                   "the associated #{association_class}.")
         method
       end
 
@@ -20,12 +20,12 @@ module YardSequel
       def create_to_one_setter
         name             = association_name
         method           = create_method_object "#{name}="
-        method.docstring += "Associates the passed #{name.classify} "\
+        method.docstring += "Associates the passed #{association_class} "\
                             'with `self`.'
-        add_param_tag(method, name, name.classify,
-                      "The #{name.classify} to associate with `self`.")
-        return_tag(method, name.classify,
-                   "the associated #{name.classify}.")
+        add_param_tag(method, name, association_class,
+                      "The #{association_class} to associate with `self`.")
+        return_tag(method, association_class,
+                   "the associated #{association_class}.")
         method
       end
     end

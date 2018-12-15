@@ -10,4 +10,5 @@ Sequel.extension :inflector
 module YardSequel; end
 
 require_relative 'yard-sequel/associations'
+require_relative 'yard-sequel/association_options'
 require_relative 'yard-sequel/ast_node_hash'

@@ -10,3 +10,5 @@ Naming/FileName:
     - lib/yard-sequel.rb
 RSpec/ImplicitSubject:
   Enabled: false
+RSpec/NestedGroups:
+  Enabled: false

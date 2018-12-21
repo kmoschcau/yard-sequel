@@ -19,4 +19,12 @@ class Artist < Sequel::Model
      :key          => :col1,
      primary_key:     :col2}
   )
+
+  # @return [Moo::Test::Bar] whatever
+  one_to_many(
+    :bar,
+    {class:       :'Moo::Test::Bar',
+     key:         :col1,
+     primary_key: :col2}
+  )
 end

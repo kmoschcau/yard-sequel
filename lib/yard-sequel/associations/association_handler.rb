@@ -26,9 +26,29 @@ module YardSequel
         )
       end
 
-      # @return [Symbol, String] the association Class.
+      # @return [String] the association Class without namespace.
       def association_class
-        @association_options&.[](:class) || association_name.classify
+        class_param = @association_options&.[](:class)
+        return class_param.to_s.split('::').last if
+          [String, Symbol].include? class_param.class
+
+        association_name.classify
+      end
+
+      # @return [String] the namespace of the association class.
+      def association_class_namespace
+        class_namespace_param = @association_options&.[](:class_namespace)
+        return class_namespace_param.to_s if
+          [String, Symbol].include? class_namespace_param.class
+
+        class_param = @association_options&.[](:class)
+        return class_param.to_s.rpartition('::').first if
+          [String, Symbol].include? class_param.class
+      end
+
+      # @return [String] the association Class with namespace.
+      def association_full_class
+        [association_class_namespace, association_class].compact.join('::')
       end
 
       # @return [String] the name of the association

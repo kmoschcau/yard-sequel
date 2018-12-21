@@ -5,6 +5,10 @@
 ### Pending Release
 
 - groups association methods
+- expands the parsing of  `:class` and `:class_namespace` options:
+  - the namespace can now also be passed with the `:class` option
+  - the fully qualified class name is now only used in @param and @return types
+    (the class name without namespace is used in the documentation text)
 
 ### 0.1.1 (2018-12-04)
 

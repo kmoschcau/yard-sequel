@@ -12,9 +12,9 @@ module YardSequel
         method           = create_method_object "add_#{name.singularize}"
         method.docstring += "Associates the passed #{association_class} "\
                             'with `self`.'
-        add_param_tag(method, name.singularize, association_class,
+        add_param_tag(method, name.singularize, association_full_class,
                       "The #{association_class} to associate with `self`.")
-        return_tag(method, association_class,
+        return_tag(method, association_full_class,
                    "the associated #{association_class}.")
         method
       end
@@ -35,7 +35,7 @@ module YardSequel
       def create_to_many_getter
         name   = association_name
         method = create_method_object name
-        return_tag(method, "Array<#{association_class}>",
+        return_tag(method, "Array<#{association_full_class}>",
                    "the associated #{association_class.pluralize}.")
         method
       end
@@ -47,7 +47,7 @@ module YardSequel
         method           = create_method_object "remove_#{name.singularize}"
         method.docstring += 'Removes the association of the passed '\
                             "#{association_class} with `self`."
-        add_param_tag(method, name.singularize, association_class,
+        add_param_tag(method, name.singularize, association_full_class,
                       "The #{association_class} to remove the association "\
                       'with `self` from.')
         void_return_tag method

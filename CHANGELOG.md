@@ -4,6 +4,8 @@
 
 ### Pending Release
 
+- groups association methods
+
 ### 0.1.1 (2018-12-04)
 
 - adds this changelog

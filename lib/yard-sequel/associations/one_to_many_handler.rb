@@ -12,11 +12,14 @@ module YardSequel
 
       def process
         super
+        original_group = extra_state.group
+        extra_state.group = "One to many #{association_name} association"
         create_to_many_adder
         create_to_many_clearer
         create_to_many_getter
         create_to_many_remover
         create_dataset_method
+        extra_state.group = original_group
       end
     end
   end

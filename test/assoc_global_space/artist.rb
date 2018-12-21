@@ -4,6 +4,9 @@ require 'sequel'
 
 # The Artist test class.
 class Artist < Sequel::Model
+  def foobar
+  end
+
   # @!method albums
   #   @return [Array<Album>] the albums.
   one_to_many :albums

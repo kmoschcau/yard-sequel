@@ -4,6 +4,8 @@
 
 ### Pending Release
 
+### 0.2.0 (2018-12-21)
+
 - groups association methods
 - expands the parsing of  `:class` and `:class_namespace` options:
   - the namespace can now also be passed with the `:class` option

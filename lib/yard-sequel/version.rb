@@ -7,11 +7,11 @@ module YardSequel
 
   # The minor version number.
   # Used for changes that are backwards compatible.
-  V_MINOR = 1
+  V_MINOR = 2
 
   # The build version number.
   # Used for internal changes.
-  V_BUILD = 1
+  V_BUILD = 0
 
   # The version of the Sequel models.
   VERSION = Gem::Version.new("#{V_MAJOR}.#{V_MINOR}.#{V_BUILD}")
